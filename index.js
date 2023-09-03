@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import fs from 'fs';
 
 ( async () => {
 
@@ -45,4 +46,14 @@ import puppeteer from 'puppeteer';
     }
     browser.close();
     console.log(JSON.stringify(buses) )
+    
+    //save to file with datetime
+    const date = new Date()
+    //mkdir
+    fs.mkdir(`data/${date.getDate()}`, { recursive: true }, (err) => {})
+    const filename = `data/${date.getDate()}/${date.getHours()}-${date.getMinutes()}.json`
+    fs.writeFile(filename, JSON.stringify(buses), (err) => {
+        if (err) throw err;
+        
+    }   );
 })();
