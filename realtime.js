@@ -1,6 +1,4 @@
 import protobuf from 'protobufjs';
-import fs from 'fs';
-import bodyParser from 'body-parser';
 import express from 'express';
 
 import { fileURLToPath } from 'url';
