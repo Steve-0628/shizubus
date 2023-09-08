@@ -1,0 +1,33 @@
+<p>
+    1. 上の箱にURLを入れる<br>
+    2. Submitを押す<br>
+    3. 下の箱に結果が出る
+</p>
+<div id="wrapper">
+    <input type="url" id="url">
+    <button id="submit">Submit</button><br>
+</div>
+<textarea></textarea>
+
+<style>
+    #wrapper {
+        display: flex;
+    }
+    #url {
+        flex-grow: 1;
+    }
+    textarea {
+        width: 100%;
+    }
+</style>
+
+<script>
+    document.getElementById("submit").addEventListener("click", async () => {
+        const url = "/data"
+        const data = document.getElementById("url").value;
+        const response = await fetch(url, { method: "POST", body: JSON.stringify({ "url": data }) , headers: { "Content-Type": "application/json" }})
+        const text = await response.text();
+        document.querySelector("textarea").value = text;
+    });
+
+</script>
